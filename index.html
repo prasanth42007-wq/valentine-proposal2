@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine Proposal ❤️</title>
+<style>
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(135deg,#ff758c,#ff7eb3);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  overflow:hidden;
+}
+
+.section{
+  display:none;
+  text-align:center;
+  background:white;
+  padding:50px;
+  border-radius:25px;
+  box-shadow:0 20px 50px rgba(0,0,0,0.2);
+  max-width:750px;
+  animation:fadeIn 0.8s ease;
+}
+
+.active{display:block;}
+
+button{
+  padding:12px 28px;
+  margin:20px;
+  border:none;
+  border-radius:30px;
+  font-size:1rem;
+  cursor:pointer;
+  background:#ff4d6d;
+  color:white;
+  transition:0.3s;
+}
+
+button:hover{transform:scale(1.1);}
+
+.glitter{ animation:glow 1.2s infinite alternate; }
+
+@keyframes glow{
+  from{box-shadow:0 0 10px #fff,0 0 20px #ff4d6d;}
+  to{box-shadow:0 0 20px #fff,0 0 40px gold;}
+}
+
+.beat{ display:inline-block; animation:beat 1s infinite; }
+@keyframes beat{ 0%,100%{transform:scale(1);} 50%{transform:scale(1.3);} }
+
+.no{ background:#ccc; color:black; position:absolute; }
+
+.reason-box{
+  background:#fff0f5;
+  margin:15px;
+  padding:15px;
+  border-radius:15px;
+  animation:glow 1.5s infinite alternate;
+}
+
+.gallery img{
+  width:200px;
+  margin:10px;
+  border-radius:20px;
+  animation:glow 1.5s infinite alternate;
+}
+
+#gameBoard{
+  display:grid;
+  grid-template-columns:repeat(5,70px);
+  gap:15px;
+  justify-content:center;
+  margin-top:20px;
+}
+
+.falling-heart{
+  position:absolute;
+  top:-10px;
+  font-size:20px;
+  animation:fall 5s linear infinite;
+}
+
+@keyframes fadeIn{ from{opacity:0;transform:scale(0.9)} to{opacity:1;transform:scale(1)} }
+@keyframes fall{ 0%{transform:translateY(0)} 100%{transform:translateY(600px);opacity:0} }
+</style>
+</head>
+<body>
+
+<!-- STEP 1 -->
+<div class="section active" id="step1">
+  <h1>Will You Be My Valentine? <span class="beat">❤️</span></h1>
+  <button class="glitter" onclick="goTo('step2')">Yes 💘</button>
+  <button class="no" id="noBtn" onmouseover="moveNo()">No 🙈</button>
+</div>
+
+<!-- STEP 2 -->
+<div class="section" id="step2">
+  <h2>I know you would click YES 😌💖</h2>
+  <img src="IMG_4150.GIF" alt="Cute GIF">
+  <br>
+  <button class="glitter" onclick="goTo('step3')">Next ➡️</button>
+</div>
+
+<!-- STEP 3 -->
+<div class="section" id="step3">
+  <h2>Reasons Why I Love You ❤️</h2>
+  <div class="reason-box">Your beautiful smile</div>
+  <div class="reason-box">Your kind and care</div>
+  <div class="reason-box">Your understanding me deeply</div>
+  <div class="reason-box">You are my safe place</div>
+  <button class="glitter" onclick="goTo('step4')">My Promise 💖</button>
+</div>
+
+<!-- STEP 4 -->
+<div class="section" id="step4">
+  <h2>My Promise 💖</h2>
+  <p>I promise to care for you,</p>
+  <p>to make you smile even on hard days,</p>
+  <p>and to love you more with every heartbeat ❤️</p>
+  <button class="glitter" onclick="goTo('step5')">Our Gallery 📸</button>
+</div>
+
+<!-- STEP 5 -->
+<div class="section" id="step5">
+  <h2>Our Gallery 📸</h2>
+  <div class="gallery">
+    <img src="IMG_3414.jpeg">
+    <img src="IMG_2859.jpeg">
+    <img src="IMG_3139.jpeg">
+    <img src="IMG_3511.jpeg">
+  </div>
+  <button class="glitter" onclick="goTo('step6')">Secret Letter 💌</button>
+</div>
+
+<!-- STEP 6 LETTER -->
+<div class="section" id="step6">
+  <h2>💌 Secret Love Letter 💌</h2>
+  <button class="glitter" onclick="goTo('step7')">Find 3 Hearts 💕</button>
+</div>
+
+<!-- STEP 7 GAME -->
+<div class="section" id="step7">
+  <h2>Find 3 Hidden Hearts 💕</h2>
+  <div id="gameBoard"></div>
+  <p id="gameMsg"></p>
+</div>
+
+<!-- FINAL LETTER -->
+<div class="section" id="finalLetter" style="position:relative;overflow:hidden;">
+  <h2>💖 Secret Love Letter 💖</h2>
+  <p><strong>Shutumani ❤️….</strong></p>
+  <p>
+  I love You more the u will ever imagine. First sorry for the delay.
+  Unnaku na epdi thareyala but nee en life la vantha oru dark period la tha ur like my angel (My cute little angel and sometimes devil 😈).
+  Sila time ena kova padutharathum ne tha and ena happy ah vachukarathum ne tha.
+  Enakaga ne neraya vishiyam mathi iruka and ena epoyum yarukum vitu kuduka manta.
+  With in one year period la ivlo nadathu iruku.
+  Na en life la expect panatha turn ne tha.
+  Nee ethum feel panathega namaba kalyanam panitu happy ah iruka porom.
+  Neraya love panalam konjam sanda, bullying, teasing panalam.
+  </p>
+  <h3>I LOVE YOU MORE SHUTUMANI ❤️</h3>
+  <p><strong>Will you be my valentine 💝 💍?</strong></p>
+</div>
+
+<script>
+function goTo(id){
+  document.querySelectorAll('.section').forEach(sec=>sec.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function moveNo(){
+  const btn=document.getElementById('noBtn');
+  btn.style.left=Math.random()*window.innerWidth+'px';
+  btn.style.top=Math.random()*window.innerHeight+'px';
+}
+
+// GAME
+const emojis=['🍫','🧸','☁️','💍','🎁','🌸','🍓','🎀','🌈','🦋'];
+const hidden=[1,4,7];
+let found=0;
+const board=document.getElementById('gameBoard');
+
+emojis.forEach((e,i)=>{
+  let d=document.createElement('div');
+  d.innerHTML=e;
+  d.style.fontSize='30px';
+  d.style.cursor='pointer';
+  d.onclick=function(){
+    if(hidden.includes(i)){
+      d.innerHTML='❤️';
+      found++;
+      document.getElementById('gameMsg').innerText=`${found}/3 hearts found 💕`;
+    }else{
+      d.style.opacity='0.4';
+    }
+    d.onclick=null;
+    if(found===3){ goTo('finalLetter'); startHearts(); }
+  }
+  board.appendChild(d);
+});
+
+function startHearts(){
+  const container=document.getElementById('finalLetter');
+  setInterval(()=>{
+    let h=document.createElement('div');
+    h.className='falling-heart';
+    h.innerHTML='💖';
+    h.style.left=Math.random()*container.offsetWidth+'px';
+    container.appendChild(h);
+    setTimeout(()=>h.remove(),5000);
+  },500);
+}
+</script>
+
+</body>
+</html>
